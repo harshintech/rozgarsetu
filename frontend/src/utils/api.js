@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: process.env.REACT_APP_API_URL || '/api',
+  baseURL: process.env.REACT_APP_API_URL || 'https://rozgarsetu-wx25.onrender.com/api',
 });
 
 api.interceptors.request.use((config) => {
