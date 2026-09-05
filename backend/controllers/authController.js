@@ -66,9 +66,10 @@ const verifyOTP = async (req, res) => {
   }
 };
 
-// POST /api/auth/check-phone
+// ALL /api/auth/check-phone
 const checkPhone = async (req, res) => {
-  const { phone } = req.body;
+  const phone = req.body?.phone || req.query?.phone;
+  if (!phone) return res.json({ exists: false });
   try {
     const user = await User.findOne({ phone });
     res.json({ exists: !!user, role: user?.role });

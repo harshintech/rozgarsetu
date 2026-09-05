@@ -35,17 +35,17 @@ export default function Login() {
     if (!phone || phone.length < 10) return toast.error('Enter a valid phone number');
     setLoading(true);
     try {
-      // Check if phone exists first
-      const check = await api.post('/auth/check-phone', { phone });
-      const body = check.data.exists
-        ? { phone }
-        : { phone, name: name.trim(), role };
-
-      if (!check.data.exists && !name.trim()) {
-        toast.error('Enter your name to register');
-        setLoading(false);
-        return;
+      let isExisting = false;
+      try {
+        const check = await api.post('/auth/check-phone', { phone });
+        isExisting = check.data?.exists;
+      } catch (checkErr) {
+        console.warn('check-phone check skipped/failed, proceeding to send-otp:', checkErr);
       }
+
+      const body = isExisting
+        ? { phone }
+        : { phone, name: (name.trim() || 'User'), role };
 
       const res = await api.post('/auth/send-otp', body);
       setIsNewUser(res.data.isNewUser);
