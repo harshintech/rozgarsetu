@@ -1,0 +1,64 @@
+.requests-list { display: flex; flex-direction: column; gap: 16px; }
+
+.request-card {}
+
+.request-card-body { padding: 20px; display: flex; flex-direction: column; gap: 16px; }
+
+.request-person {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.request-person-info { flex: 1; min-width: 0; }
+.request-person-name { font-family: var(--font-heading); font-size: 1.05rem; font-weight: 700; }
+.request-person-sub { font-size: 0.82rem; color: var(--text-muted); margin-top: 2px; }
+
+.request-status-badge { flex-shrink: 0; font-size: 0.82rem !important; }
+
+.request-details { padding: 16px; background: var(--bg); border-radius: 0; }
+
+.request-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.req-detail-item { display: flex; flex-direction: column; gap: 2px; }
+.req-detail-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.4px; font-weight: 600; }
+.req-detail-value { font-size: 0.95rem; font-weight: 700; color: var(--text); }
+
+.request-description {
+  display: flex;
+  gap: 8px;
+  font-size: 0.88rem;
+  color: var(--text);
+  line-height: 1.5;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+}
+
+.request-meta { font-size: 0.78rem; color: var(--text-muted); margin-top: 6px; }
+
+.request-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+.tab-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 0;
+  font-size: 0.7rem;
+  font-weight: 700;
+  margin-left: 4px;
+  padding: 0 4px;
+}
+
+@media (max-width: 600px) {
+  .request-detail-grid { grid-template-columns: repeat(2, 1fr); }
+}

@@ -1,0 +1,148 @@
+/* Main tab switcher for Applications page */
+.apps-main-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.apps-main-tab {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 0;
+  cursor: pointer;
+  text-align: left;
+  transition: var(--transition);
+  font-family: var(--font-body);
+  position: relative;
+}
+
+.apps-main-tab:hover {
+  border-color: var(--primary);
+  background: var(--primary-light);
+}
+
+.apps-main-tab.active {
+  border-color: var(--primary);
+  background: var(--primary-light);
+  box-shadow: 0 0 0 3px rgba(249,115,22,0.14);
+}
+
+.amt-icon { font-size: 1.6rem; flex-shrink: 0; }
+.amt-label { font-weight: 700; font-size: 0.95rem; color: var(--text); }
+.amt-sub { font-size: 0.78rem; color: var(--text-muted); margin-top: 2px; }
+
+.amt-count {
+  margin-left: auto;
+  background: var(--primary);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 0;
+  flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  .apps-main-tabs { grid-template-columns: 1fr; }
+}
+
+.app-card { cursor: pointer; transition: var(--transition); }
+.app-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+
+.app-card-body { padding: 18px 20px; }
+
+.app-job-info { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; }
+
+.app-job-title { font-family: var(--font-heading); font-size: 1rem; font-weight: 700; margin-bottom: 5px; }
+.app-job-meta { font-size: 0.83rem; color: var(--text-muted); margin-top: 3px; }
+.app-message { font-size: 0.83rem; color: var(--text); margin-top: 8px; font-style: italic; }
+
+/* Employer two-panel layout */
+.employer-apps-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #fff;
+  min-height: 500px;
+}
+
+.jobs-panel { border-right: 1px solid var(--border); background: var(--bg); }
+
+.jobs-panel-header {
+  padding: 16px 20px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.95rem;
+  border-bottom: 1px solid var(--border);
+  background: #fff;
+}
+
+.job-panel-item {
+  padding: 14px 20px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--border);
+  transition: var(--transition);
+}
+.job-panel-item:hover { background: var(--primary-light); }
+.job-panel-item.active { background: var(--primary-light); border-left: 3px solid var(--primary); }
+
+.job-panel-title { font-weight: 600; font-size: 0.88rem; margin-bottom: 5px; }
+.job-panel-meta { font-size: 0.78rem; color: var(--text-muted); display: flex; align-items: center; gap: 6px; }
+.badge-sm { font-size: 0.72rem !important; padding: 2px 8px !important; }
+
+.apps-panel { display: flex; flex-direction: column; }
+
+.apps-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.apps-panel-title { font-family: var(--font-heading); font-weight: 700; font-size: 1rem; }
+.apps-panel-sub { font-size: 0.82rem; color: var(--text-muted); margin-top: 3px; }
+
+.applicant-row-full {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  transition: var(--transition);
+}
+.applicant-row-full:last-child { border-bottom: none; }
+.applicant-row-full:hover { background: var(--bg); }
+
+.app-worker-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  color: var(--text);
+  transition: var(--transition);
+}
+.app-worker-name:hover { color: var(--primary); }
+
+.app-worker-meta { font-size: 0.82rem; color: var(--text-muted); margin-top: 3px; }
+
+.app-worker-message {
+  font-size: 0.82rem;
+  color: var(--text);
+  font-style: italic;
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .employer-apps-layout { grid-template-columns: 1fr; }
+  .jobs-panel { border-right: none; border-bottom: 1px solid var(--border); }
+}
