@@ -20,12 +20,12 @@ const sendOTP = async (req, res) => {
       user.otpExpiry = otpExpiry;
       await user.save();
       console.log(`\n📱 OTP for ${phone}: ${otp}\n`);
-      return res.json({ message: 'OTP sent', isNewUser: false });
+      return res.json({ message: 'OTP sent', isNewUser: false, otp });
     } else {
       if (!name || !role) return res.status(400).json({ message: 'Name and role required for new users' });
       user = await User.create({ phone, name, role, otp, otpExpiry });
       console.log(`\n📱 OTP for ${phone}: ${otp}\n`);
-      return res.json({ message: 'OTP sent', isNewUser: true });
+      return res.json({ message: 'OTP sent', isNewUser: true, otp });
     }
   } catch (err) {
     res.status(500).json({ message: err.message });

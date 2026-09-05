@@ -131,6 +131,59 @@
   margin-bottom: 24px;
 }
 
+.otp-display-banner {
+  background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+  border: 2px dashed #f97316;
+  border-radius: 8px;
+  padding: 14px 16px;
+  text-align: center;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.08);
+}
+
+.otp-display-header {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #c2410c;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.otp-display-code {
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: 6px;
+  color: #ea580c;
+  font-family: monospace;
+  margin: 4px 0 10px 0;
+}
+
+.otp-autofill-btn {
+  background: #ea580c;
+  color: #ffffff;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.otp-autofill-btn:hover {
+  background: #c2410c;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(234, 88, 12, 0.25);
+}
+
 .otp-inputs { display: flex; gap: 10px; justify-content: center; margin-bottom: 28px; }
 .otp-box {
   width: 48px; height: 56px;

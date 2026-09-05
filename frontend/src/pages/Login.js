@@ -14,6 +14,7 @@ export default function Login() {
   const [name, setName] = useState('');
   const [role, setRole] = useState('worker');
   const [otp, setOtp] = useState(['', '', '', '', '', '']);
+  const [receivedOtp, setReceivedOtp] = useState('');
   const [loading, setLoading] = useState(false);
   const [timer, setTimer] = useState(0);
   const { login } = useAuth();
@@ -48,7 +49,10 @@ export default function Login() {
 
       const res = await api.post('/auth/send-otp', body);
       setIsNewUser(res.data.isNewUser);
-      toast.success('OTP sent! Check server console.');
+      if (res.data.otp) {
+        setReceivedOtp(res.data.otp);
+      }
+      toast.success('OTP sent!');
       setStep(STEPS.OTP);
       setTimer(60);
     } catch (err) {
@@ -166,7 +170,7 @@ export default function Login() {
               </form>
 
               <p className="auth-note">
-                <span>🔒</span> OTP will be printed to server console (demo mode)
+                <span>🔒</span> Demo Mode: OTP will be displayed on screen
               </p>
             </>
           ) : (
@@ -177,9 +181,27 @@ export default function Login() {
               <h2 className="auth-title">Enter OTP</h2>
               <p className="auth-sub">Sent to +91 {phone}</p>
 
-              <div className="otp-hint">
-                📋 Check your server console/terminal for the OTP
-              </div>
+              {receivedOtp ? (
+                <div className="otp-display-banner">
+                  <div className="otp-display-header">
+                    <span>🔑</span> DEMO OTP CODE
+                  </div>
+                  <div className="otp-display-code">{receivedOtp}</div>
+                  <button
+                    type="button"
+                    className="otp-autofill-btn"
+                    onClick={() => {
+                      setOtp(receivedOtp.split(''));
+                    }}
+                  >
+                    ⚡ Auto-fill OTP
+                  </button>
+                </div>
+              ) : (
+                <div className="otp-hint">
+                  📋 Check your server console/terminal for the OTP
+                </div>
+              )}
 
               <form onSubmit={handleVerify}>
                 <div className="otp-inputs" onPaste={handleOtpPaste}>
